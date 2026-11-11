@@ -23,7 +23,7 @@ else:
 # ask the user for a season; input()return text
 season = input("Enter a season (example: 2026): ")
 
-round_number = input("Enter race round (example: 1):")
+round_number = input("Enter race round (example: 1): ")
 
 
 # REJECTING INVALID INPUT BEFORE CALLING THE API
@@ -60,7 +60,7 @@ url = f"https://api.jolpi.ca/ergast/f1/{season}/{round_number}/results/"
 # EXCEPTION HANDLING: try the request so network faliures can be handled.
 try:
     # request resutls for the selected race.
-    response = requests.get(url, timeout=15, headers = {"User-Agent": "F1RaceRecaps/0.1"}
+    response = requests.get(url, params={"limit": 100}, timeout=15, headers = {"User-Agent": "F1RaceRecaps/0.1"}
                             ) # set a timeout of 15 seconds for the request
     response.raise_for_status() # raise an exception if the request failed like the 404 or 500 errors
 
@@ -109,6 +109,9 @@ for result in results:
         "Grid": int(result["grid"]),
         "Points": float(result["points"]),
     }   
+    row["Position Change"] = (
+    row["Grid"] - row["Position"] if row["Grid"] > 0 else None
+)
 
     # add this drriver's row to our list.
     rows.append(row)
