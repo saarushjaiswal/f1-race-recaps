@@ -1,7 +1,10 @@
-# Improting the library that lets Python make the HTTP requests
-import requests
+import requests # Improting the library that lets Python make the HTTP requests
+import pandas as pd #importing pandas library to work with the dfs.
+
 #  select thr results endopint for season 2026, and race round 1 (which is the Australian Grand Prix)
 url ="https://api.jolpi.ca/ergast/f1/2026/1/results/"
+#  reference: https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
+
 
 # request the race resutls and store the server's response.
 response = requests.get(
@@ -30,7 +33,37 @@ print(race["raceName"])
 
 
 # get the list of dirver resutls for this race.
-resutls = race["Results"]
+results = race["Results"]
 
 # then print how many drivers appear in the results
-print(len(resutls))
+print(len(results))
+
+# # looping through each driver's result.
+# for result in resutls:
+#     # get the dictionary containing the driver's info
+#     driver = result["Driver"]
+
+#     # printing the drivers finishing pos, and name
+#     print(result["position"], driver["givenName"], driver["familyName"])
+
+# Start an empty list to hold the table rows.
+rows = []
+
+for result in results:
+    # build one row using the fields we want to keep
+    row = {
+        "Position": int(result["position"]),
+        "Driver": result["Driver"]["givenName"] + " " + result["Driver"]["familyName"],
+        "Team": result["Constructor"]["name"],
+        "Grid": int(result["grid"]),
+        "Points": float(result["points"]),
+    }   
+
+    # add this drriver's row to our list.
+    rows.append(row)
+
+table = pd.DataFrame(rows)  # convert the list of rows into a pandas df
+
+# pritn the table without pandas extra row-num column.
+print(table.to_string(index=False))  
+
