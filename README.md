@@ -50,6 +50,11 @@ this project is not affiliated with Formula 1.
 
 The user enters a season and race round. The program fetches results from the Jolpica F1 API and displays a table using pandas.
 
-![System diagram](docs/system-diagram.png)
+SYSTEM DIAGRAM:
+![System diagram](docs\SystemDiagram.png)
+
+EISENHOWER MATRIX: docs\Eisenhower Matrix.pdf
+[View system diagram](docs\Eisenhower Matrix.pdf)
+
 
 
