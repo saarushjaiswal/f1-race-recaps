@@ -2,6 +2,19 @@ import requests # Improting the library that lets Python make the HTTP requests
 import pandas as pd #importing pandas library to work with the dfs.
 import sys # Importing the sys library which helps us to exit the program.
 from pathlib import Path # importing the path library to work with file paths (used in prompt for groq)
+import os
+from dotenv import load_dotenv
+
+# LOAD PRIVATE LOCAL SETTING SWIHTOUT PUTTING SECRETS IN SOURCE CODE.
+load_dotenv(Path(__file__).resolve().parent / ".env")
+api_key = os.getenv("GROQ_API_KEY")
+
+
+# Missing AI config should not prevent viewing the race result
+if not api_key:
+    print("AI recap unavailable: GROQ_API_KEY is not configured.")
+else:
+    print("API key loaded.")
 
 # Select the results endopint for season 2026, and race round 1 (which is the Australian Grand Prix)
 # url ="https://api.jolpi.ca/ergast/f1/2026/1/results/"
@@ -133,5 +146,51 @@ recap_prompt = (
     f"Race classification: {rows}\n"
 )
 
-#  inspect the complete prompt before sending it to Groq AI
-print(recap_prompt)
+# Authenticate using the private key loaded from the environment.
+groq_headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json",
+}
+
+# IMP: DOCUMENTATION FOR https://console.groq.com/docs/api-reference
+
+# Specify which model should answer and supply the complete recap prompt.
+groq_payload = {
+    "model": "openai/gpt-oss-20b",
+    "messages": [
+        {
+            "role": "user",  # This message contains our request.
+            "content": recap_prompt,  # Use the variable's actual text.
+        }
+    ],
+}
+
+# now we would oonly request an AI recap only if a key is alr configured. This way the user can still see the race results even if they don't have a key.
+if api_key:
+    try:
+        # POST sends our prompt and model settings to Groq as JSON.
+        groq_response = requests.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers=groq_headers,
+            json=groq_payload,
+            timeout=30,
+        )
+
+        # this turns unsuccessful HTTP responses into catchable errors.
+        groq_response.raise_for_status()
+
+        # Decode Groq's JSON response.
+        groq_data = groq_response.json()
+
+        # Extract the text from the first generated answer.
+        recap = groq_data["choices"][0]["message"]["content"]
+
+        # Label the output so users know it was AI-generated.
+        print("\nAI-generated recap:")
+        print(recap)
+
+    except requests.exceptions.RequestException as e:
+        # save the  the results table even when recap generation fails.
+        print(f"AI recap unavailable: {e}")
+
+
