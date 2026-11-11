@@ -46,7 +46,6 @@ Recaps will describe only information supported by the retrieved results. They w
 
 this project is not affiliated with Formula 1.
 
-## How It Works
 
 The user enters a season and race round. The program fetches results from the Jolpica F1 API and displays a table using pandas.
 
