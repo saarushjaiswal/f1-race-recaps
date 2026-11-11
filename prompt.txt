@@ -1,23 +1,26 @@
-Write a concise Formula 1 results recap for the race specified below,
-using only the supplied race classification.
+Write a short Formula 1 results recap using only the race facts supplied below.
 
 Style:
-- Use an energetic but factual motorsport journalism tone.
-- Write in plain text suitable for a Python terminal.
-- Keep the report under 200 words.
+- Write in plain text without Markdown formatting.
+- Include a short headline followed by 3–4 sentences.
+- Keep the entire report under 100 words.
+- Use a factual motorsport journalism tone.
 
 Include:
-1. A short headline.
-2. The winner, team, and podium finishers, where available.
-3. Notable grid-to-finish position gains or losses.
-4. Points earned by the drivers discussed.
+- The winner and team.
+- All drivers classified in positions 2 and 3, where available.
+- Points earned by the podium drivers discussed.
+- One driver with the largest positive Position Change, if available.
 
-Accuracy rules:
-- Use only the supplied facts. Do not add outside knowledge.
-- Position changes are net grid-to-finish changes, not overtake counts.
-- If Grid is 0, do not calculate a position gain or infer a starting position.
-- Do not invent incidents, weather, tire strategies, radio quotes,
-  technical upgrades, penalties, financial impacts, or paddock reactions.
-- Do not infer championship standings from one race.
-- If information is unavailable, omit it.
-- Do not claim to be reporting live or have insider access.
+Accuracy:
+- Copy driver names, teams, positions, and points exactly.
+- Use Position Change directly. Positive means places gained,
+  negative means places lost, and zero means unchanged.
+- Ignore position changes where Grid is 0 or Position Change is None.
+- Describe shared positions as shared classification positions.
+- Position changes are not overtake counts.
+- Do not invent winning margins, incidents, battles, strategy,
+  weather, quotes, car performance, or reasons for the results.
+- Do not make championship, season-wide, or historical claims.
+- Do not make general claims about other drivers' points.
+- Omit information that is unavailable.
