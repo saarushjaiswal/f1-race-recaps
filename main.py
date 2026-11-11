@@ -11,11 +11,39 @@ season = input("Enter a season (example: 2026): ")
 
 round_number = input("Enter race round (example: 1):")
 
+
+# REJECTING INVALID INPUT BEFORE CALLING THE API
+season = season.strip() 
+round_number = round_number.strip()
+
+# Requre ordinarry digits for the season and round number, and require the season to be 4 digits long
+if not season.isascii() or not season.isdigit() or len(season) != 4:
+    print("Invalid season. Please enter a 4-digit year (example: 2026).")
+    sys.exit(1)
+
+# validating the round seperatly so the message explains th problem.
+if not round_number.isascii() or not round_number.isdigit():
+    print("Invalid round number. Please enter a positive integer (example: 1).")
+    sys.exit(1)
+
+# Convert the validated text into ints
+season = int(season)
+round_number = int(round_number)
+
+# Since f1's first season was in 1950 and naturlly the round numebrs start at 1 , we can reject the inputs befroe that
+if season < 1950 or round_number < 1:
+    print("Invalid season or round number. Please enter a season of 1950 or later and a round number of 1 or greater.")
+    sys.exit(1)
+
+
+
+
+
 # fetching the exact season and round requested from the user
 url = f"https://api.jolpi.ca/ergast/f1/{season}/{round_number}/results/"
 
 
-# Excpetion handling: try the request so network faliures can be handled.
+# EXCEPTION HANDLING: try the request so network faliures can be handled.
 try:
     # request resutls for the selected race.
     response = requests.get(url, timeout=15, headers = {"User-Agent": "F1RaceRecaps/0.1"}
@@ -36,9 +64,9 @@ data = response.json()
 # navigaging through those dictionaries to get the list of the races.
 races = data["MRData"]["RaceTable"]["Races"]
 
-# Excpetion handling: if the race is is empty which means the requested season and round.
+# EXCEPTION HANDLING: if the race is is empty which means the requested season and round.
 if not races:
-    print("No races data found for season " + season + " and round " + round_number + ". Check and try again.")
+    print(f"No race results found for season {season} and round {round_number}. Check and try again.")
     sys.exit(1) # this stops before trying to access the invalid race
 
 race = races[0]
@@ -57,15 +85,7 @@ results = race["Results"]
 # then print how many drivers appear in the results
 print("Number of Drivers: " + str(len(results)))
 
-# # looping through each driver's result.
-# for result in resutls:
-#     # get the dictionary containing the driver's info
-#     driver = result["Driver"]
 
-#     # printing the drivers finishing pos, and name
-#     print(result["position"], driver["givenName"], driver["familyName"])
-
-# Start an empty list to hold the table rows.
 rows = []
 
 for result in results:
