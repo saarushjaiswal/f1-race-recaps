@@ -1,0 +1,23 @@
+Write a concise Formula 1 results recap for the race specified below,
+using only the supplied race classification.
+
+Style:
+- Use an energetic but factual motorsport journalism tone.
+- Write in plain text suitable for a Python terminal.
+- Keep the report under 200 words.
+
+Include:
+1. A short headline.
+2. The winner, team, and podium finishers, where available.
+3. Notable grid-to-finish position gains or losses.
+4. Points earned by the drivers discussed.
+
+Accuracy rules:
+- Use only the supplied facts. Do not add outside knowledge.
+- Position changes are net grid-to-finish changes, not overtake counts.
+- If Grid is 0, do not calculate a position gain or infer a starting position.
+- Do not invent incidents, weather, tire strategies, radio quotes,
+  technical upgrades, penalties, financial impacts, or paddock reactions.
+- Do not infer championship standings from one race.
+- If information is unavailable, omit it.
+- Do not claim to be reporting live or have insider access.
