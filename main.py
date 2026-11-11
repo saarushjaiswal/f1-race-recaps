@@ -2,7 +2,7 @@ import requests # Improting the library that lets Python make the HTTP requests
 import pandas as pd #importing pandas library to work with the dfs.
 import sys # Importing the sys library which helps us to exit the program.
 
-#  select thr results endopint for season 2026, and race round 1 (which is the Australian Grand Prix)
+#  s    elect thr results endopint for season 2026, and race round 1 (which is the Australian Grand Prix)
 # url ="https://api.jolpi.ca/ergast/f1/2026/1/results/"
 #  reference: https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
 
@@ -47,7 +47,7 @@ url = f"https://api.jolpi.ca/ergast/f1/{season}/{round_number}/results/"
 try:
     # request resutls for the selected race.
     response = requests.get(url, timeout=15, headers = {"User-Agent": "F1RaceRecaps/0.1"}
-                            ) # set a timeout of 10 seconds for the request
+                            ) # set a timeout of 15 seconds for the request
     response.raise_for_status() # raise an exception if the request failed like the 404 or 500 errors
 
 except requests.exceptions.RequestException as e:
@@ -68,8 +68,6 @@ races = data["MRData"]["RaceTable"]["Races"]
 if not races:
     print(f"No race results found for season {season} and round {round_number}. Check and try again.")
     sys.exit(1) # this stops before trying to access the invalid race
-
-race = races[0]
 
 
 # getting the first race in the list; the index starts at 0
