@@ -1,8 +1,9 @@
 import requests # Improting the library that lets Python make the HTTP requests
 import pandas as pd #importing pandas library to work with the dfs.
 import sys # Importing the sys library which helps us to exit the program.
+from pathlib import Path # importing the path library to work with file paths (used in prompt for groq)
 
-#  s    elect thr results endopint for season 2026, and race round 1 (which is the Australian Grand Prix)
+# Select the results endopint for season 2026, and race round 1 (which is the Australian Grand Prix)
 # url ="https://api.jolpi.ca/ergast/f1/2026/1/results/"
 #  reference: https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
 
@@ -83,7 +84,7 @@ results = race["Results"]
 # then print how many drivers appear in the results
 print("Number of Drivers: " + str(len(results)))
 
-
+# empty list to hold the rows of our table
 rows = []
 
 for result in results:
@@ -104,3 +105,33 @@ table = pd.DataFrame(rows)  # convert the list of rows into a pandas df
 # pritn the table without pandas extra row-num column.
 print(table.to_string(index=False))  
 
+
+
+# locate the text file beside this main py script
+# __file__ is the path of this file,
+# rsolve turns int a fill abs path and parent gets the folder it is in and then prompt.txt is the file we want to find
+
+prompt_path = Path(__file__).resolve().parent / "prompt.txt" 
+
+try:
+    # Read the contents from the prmpt file and convert to str
+    prompt = prompt_path.read_text(encoding="utf-8")
+except OSError as e:
+    print(f"Could not read the prompt file: {e}")
+    sys.exit(1)
+
+
+
+
+# combine the resuabale instructions with the selcted race's actual facts
+
+recap_prompt = (
+    f"{prompt}\n\n"
+    f"Season: {season}\n"
+    f"Race: {race['raceName']}\n"
+    f"Round: {round_number}\n"
+    f"Race classification: {rows}\n"
+)
+
+#  inspect the complete prompt before sending it to Groq AI
+print(recap_prompt)
