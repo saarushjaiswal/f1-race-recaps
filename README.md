@@ -35,7 +35,7 @@ The recap prompt uses the supplied race results and asks Groq to avoid guessing 
 
 ## Tech Stack:
 
-- **Python 3.13** for the command-line app
+- **Python 3.14** for the command-line app
 - **requests** for HTTP requests
 - **pandas** for formatting the classification table
 - **python-dotenv** for loading the Groq API key
@@ -63,7 +63,7 @@ Install Python 3.14 and Git, then run the following commands on macOS or Linux:
 ```bash
 git clone https://github.com/saarushjaiswal/f1-race-recaps.git
 cd f1-race-recaps
-python3.13 -m venv .venv
+python3.14 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
