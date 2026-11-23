@@ -1,0 +1,185 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0">
+  <diagram id="f1-race-recaps" name="F1 Race Recaps">
+    <mxGraphModel dx="1600" dy="2400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="2400" background="#F7F9FD" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b style=&quot;font-size:34px&quot;&gt;F1 Race Recaps&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:18px&quot; color=&quot;#51698A&quot;&gt;System diagram&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="434" y="30" width="700" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Terminals -->
+        <mxCell id="start" value="&lt;b&gt;Start&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#E5F2E9;strokeColor=#8FB89B;strokeWidth=2;fontSize=18;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="571" y="172" width="170" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="end" value="&lt;b&gt;End&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#E5F2E9;strokeColor=#8FB89B;strokeWidth=2;fontSize=18;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="571" y="2250" width="170" height="61" as="geometry"/>
+        </mxCell>
+        <mxCell id="endEarly" value="&lt;b&gt;End after race results&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#E5F2E9;strokeColor=#8FB89B;strokeWidth=2;fontSize=18;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="1012" y="1680" width="405" height="77" as="geometry"/>
+        </mxCell>
+
+        <!-- Process steps (blue) -->
+        <mxCell id="season" value="&lt;b style=&quot;font-size:20px&quot;&gt;Enter season&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;Check the year format&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="425" y="272" width="462" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="roundInput" value="&lt;b style=&quot;font-size:20px&quot;&gt;Enter a round or type ls&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="425" y="413" width="462" height="87" as="geometry"/>
+        </mxCell>
+        <mxCell id="calendar" value="&lt;b style=&quot;font-size:20px&quot;&gt;Fetch Jolpica calendar&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;Show race names and round numbers&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="986" y="550" width="469" height="96" as="geometry"/>
+        </mxCell>
+        <mxCell id="chooseRound" value="&lt;b style=&quot;font-size:20px&quot;&gt;Choose a round&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="1048" y="713" width="344" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="fetchResults" value="&lt;b style=&quot;font-size:20px&quot;&gt;Fetch Jolpica results&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;GET the selected race&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="429" y="915" width="454" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="display" value="&lt;b style=&quot;font-size:20px&quot;&gt;Display the classification&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;Format driver rows with pandas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="397" y="1375" width="518" height="89" as="geometry"/>
+        </mxCell>
+        <mxCell id="prepare" value="&lt;b style=&quot;font-size:20px&quot;&gt;Prepare the recap prompt&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;Combine prompt.txt with race facts&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E8EEF8;strokeColor=#9DB2CE;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="406" y="1518" width="500" height="89" as="geometry"/>
+        </mxCell>
+
+        <!-- Storage / output steps (green) -->
+        <mxCell id="saveJson" value="&lt;b style=&quot;font-size:20px&quot;&gt;Save race data as JSON&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;data/cache/race_&amp;lt;season&amp;gt;_&amp;lt;round&amp;gt;.json&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E5F2E9;strokeColor=#8FB89B;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="358" y="1221" width="597" height="97" as="geometry"/>
+        </mxCell>
+        <mxCell id="saveRecap" value="&lt;b style=&quot;font-size:20px&quot;&gt;Display and save the recap&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot; style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;reports/race_&amp;lt;season&amp;gt;_&amp;lt;round&amp;gt;.txt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E5F2E9;strokeColor=#8FB89B;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="354" y="2095" width="604" height="97" as="geometry"/>
+        </mxCell>
+
+        <!-- Groq request (purple) -->
+        <mxCell id="groq" value="&lt;b style=&quot;font-size:20px&quot;&gt;Request Groq recap&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;POST the prepared prompt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#EDE8F5;strokeColor=#A99BD0;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="429" y="1812" width="454" height="86" as="geometry"/>
+        </mxCell>
+
+        <!-- Decisions (amber) -->
+        <mxCell id="typedLs" value="&lt;b&gt;Typed ls?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF0CC;strokeColor=#D4962A;strokeWidth=2;fontSize=20;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="510" y="544" width="292" height="108" as="geometry"/>
+        </mxCell>
+        <mxCell id="validRound" value="&lt;b&gt;Valid year and round?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF0CC;strokeColor=#D4962A;strokeWidth=2;fontSize=20;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="458" y="752" width="396" height="114" as="geometry"/>
+        </mxCell>
+        <mxCell id="resultsOk" value="&lt;b&gt;Results available?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF0CC;strokeColor=#D4962A;strokeWidth=2;fontSize=20;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="443" y="1059" width="427" height="113" as="geometry"/>
+        </mxCell>
+        <mxCell id="groqKey" value="&lt;b&gt;Groq key configured?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF0CC;strokeColor=#D4962A;strokeWidth=2;fontSize=20;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="449" y="1662" width="413" height="113" as="geometry"/>
+        </mxCell>
+        <mxCell id="requestOk" value="&lt;b&gt;Request succeeds?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF0CC;strokeColor=#D4962A;strokeWidth=2;fontSize=20;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="467" y="1943" width="378" height="106" as="geometry"/>
+        </mxCell>
+
+        <!-- Errors (red) -->
+        <mxCell id="errYear" value="&lt;b style=&quot;font-size:20px&quot;&gt;Show input error&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;End the run&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;fillColor=#FCE4E6;strokeColor=#D98B97;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="64" y="274" width="286" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="errInput" value="&lt;b style=&quot;font-size:20px&quot;&gt;Show input error&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;End the run&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;fillColor=#FCE4E6;strokeColor=#D98B97;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="64" y="766" width="286" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="errCalendar" value="&lt;b style=&quot;font-size:20px&quot;&gt;Show calendar error&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;End the run&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;fillColor=#FCE4E6;strokeColor=#D98B97;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="1121" y="867" width="384" height="87" as="geometry"/>
+        </mxCell>
+        <mxCell id="errResults" value="&lt;b style=&quot;font-size:20px&quot;&gt;Show results error&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;End the run&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;fillColor=#FCE4E6;strokeColor=#D98B97;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="64" y="1072" width="286" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="errPrompt" value="&lt;b style=&quot;font-size:20px&quot;&gt;Show prompt error&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;End the run&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;fillColor=#FCE4E6;strokeColor=#D98B97;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="64" y="1519" width="286" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="errRecap" value="&lt;b style=&quot;font-size:20px&quot;&gt;Show recap unavailable&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot; color=&quot;#51698A&quot;&gt;Keep the saved results&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=15;fillColor=#FCE4E6;strokeColor=#D98B97;strokeWidth=2;fontColor=#16253D;" vertex="1" parent="1">
+          <mxGeometry x="1012" y="1953" width="405" height="86" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges: main flow -->
+        <mxCell id="e1" value="Start program" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="start" target="season">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="Season" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="season" target="roundInput">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="User input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="roundInput" target="typedLs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="typedLs" target="calendar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="typedLs" target="validRound">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="Race list" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="calendar" target="chooseRound">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="Selected round" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chooseRound" target="validRound">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="949" y="755"/>
+              <mxPoint x="949" y="809"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="Yes · season and round" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="validRound" target="fetchResults">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="HTTP response" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fetchResults" target="resultsOk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="Yes · race JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="resultsOk" target="saveJson">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" value="Race data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="saveJson" target="display">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="Classification rows" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="display" target="prepare">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="Prepared prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="prepare" target="groqKey">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="groqKey" target="endEarly">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" value="Yes · prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="groqKey" target="groq">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" value="Groq response" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="groq" target="requestOk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e17" value="Yes · recap text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="requestOk" target="saveRecap">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e18" value="Saved text file" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#51698A;endArrow=block;endFill=1;fontColor=#51698A;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="saveRecap" target="end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges: error paths -->
+        <mxCell id="x1" value="Bad year format" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#A63D4F;endArrow=block;endFill=1;fontColor=#A63D4F;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="season" target="errYear">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="x2" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#A63D4F;endArrow=block;endFill=1;fontColor=#A63D4F;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="validRound" target="errInput">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="x3" value="Unavailable" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#A63D4F;endArrow=block;endFill=1;fontColor=#A63D4F;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="calendar" target="errCalendar">
+          <mxGeometry x="0.55" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1538" y="598"/>
+              <mxPoint x="1538" y="910"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x4" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#A63D4F;endArrow=block;endFill=1;fontColor=#A63D4F;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="resultsOk" target="errResults">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="x5" value="Prompt read error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#A63D4F;endArrow=block;endFill=1;fontColor=#A63D4F;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="prepare" target="errPrompt">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="x6" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#A63D4F;endArrow=block;endFill=1;fontColor=#A63D4F;fontStyle=1;fontSize=13;labelBackgroundColor=#F7F9FD;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="requestOk" target="errRecap">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
