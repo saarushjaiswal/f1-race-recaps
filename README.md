@@ -58,7 +58,7 @@ The user enters a season and race round. The program fetches results from the Jo
 
 ## Setup and Run
 
-Install Python and Git, then run the following commands on macOS or Linux:
+Install Python 3.14 and Git, then run the following commands on macOS or Linux:
 
 ```bash
 git clone https://github.com/saarushjaiswal/f1-race-recaps.git
@@ -82,7 +82,7 @@ The calendar and race results work without an API key. Run the app with:
 
 ## Example
 
-Enter `2026` for the season, type `ls` to open the calendar, then enter `21` to select the Las Vegas Grand Prix. You can also type `1` directly at the first round prompt.
+Enter `2026` for the season, type `ls` to open the calendar, then enter `21` to select the Las Vegas Grand Prix. You can also type `21` directly at the first round prompt.
 
 
 ```text
