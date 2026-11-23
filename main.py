@@ -4,6 +4,7 @@ import sys # Importing the sys library which helps us to exit the program.
 from pathlib import Path # importing the path library to work with file paths (used in prompt for groq)
 import os
 from dotenv import load_dotenv
+import json #to save the results
 
 # LOAD PRIVATE LOCAL SETTING SWIHTOUT PUTTING SECRETS IN SOURCE CODE.
 load_dotenv(Path(__file__).resolve().parent / ".env")
@@ -86,6 +87,18 @@ if not races:
 
 # getting the first race in the list; the index starts at 0
 race = races[0]
+
+project_dir = Path(__file__).resolve().parent
+file_name = f"race_{season}_{round_number}"
+results_dir = project_dir / "data" / "cache"
+results_dir.mkdir(parents=True, exist_ok=True)  # create the directory if it doesn't exist yet 
+
+results_file_path = results_dir / f"{file_name}.json"
+# file IO
+with results_file_path.open("w", encoding="utf-8") as f:
+    json.dump(race, f) # save the race data to a json file 
+
+print(f"Race results are now available and are saved to {results_file_path}")
 
 # printing the name stored in this races dictionary
 print("Race: " +race["raceName"])
@@ -191,6 +204,13 @@ if api_key:
         # Label the output so users know it was AI-generated.
         print("\nAI-generated recap:")
         print(recap)
+
+        reports_dir = project_dir/"reports"
+        reports_dir.mkdir( exist_ok=True)  # create the directory if it
+        recap_path  = reports_dir / f"{file_name}.txt"
+        recap_path.write_text(recap + "\n", encoding="utf-8")  # save the recap to a text file
+        print(f"Recap saved to {recap_path} successfully.")
+        
 
     except requests.exceptions.RequestException as e:
         # save the  the results table even when recap generation fails.
