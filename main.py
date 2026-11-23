@@ -22,19 +22,42 @@ else:
 #  reference: https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
 
 # ask the user for a season; input()return text
-season = input("Enter a season (example: 2026): ")
-
-round_number = input("Enter race round (example: 1): ")
-
-
-# REJECTING INVALID INPUT BEFORE CALLING THE API
-season = season.strip() 
-round_number = round_number.strip()
+season = input("Enter a season (example: 2026): ").strip()
 
 # Requre ordinarry digits for the season and round number, and require the season to be 4 digits long
 if not season.isascii() or not season.isdigit() or len(season) != 4:
     print("Invalid season. Please enter a 4-digit year (example: 2026).")
     sys.exit(1)
+
+season = int(season)
+
+
+
+round_number = input("Enter a race round, or type ls to see the calendar: ").strip()
+
+if round_number.lower() == "ls":
+    # Fetch the calendar for the specified season
+    calendar_url = f"https://api.jolpi.ca/ergast/f1/{season}/races/"
+    try:
+        calendar_response = requests.get(calendar_url, timeout=15)
+        calendar_response.raise_for_status()
+        calendar_data = calendar_response.json()
+        races = calendar_data["MRData"]["RaceTable"]["Races"]
+    except requests.exceptions.RequestException as e:
+        print(f"Could not fetch the calendar: {e}")
+        sys.exit(1)
+    
+        
+    if not races:
+        print(f"No races found for season {season}.")
+        sys.exit(1)
+    
+    for race in races:
+        print(f"Round {race['round']}: {race['raceName']} on {race['date']}")
+    
+    round_number = input("Enter race round from the above list: ").strip()
+
+
 
 # validating the round seperatly so the message explains th problem.
 if not round_number.isascii() or not round_number.isdigit():
@@ -42,12 +65,16 @@ if not round_number.isascii() or not round_number.isdigit():
     sys.exit(1)
 
 # Convert the validated text into ints
-season = int(season)
+
 round_number = int(round_number)
 
 # Since f1's first season was in 1950 and naturlly the round numebrs start at 1 , we can reject the inputs befroe that
-if season < 1950 or round_number < 1:
-    print("Invalid season or round number. Please enter a season of 1950 or later and a round number of 1 or greater.")
+if season < 1950:
+    print("Invalid season. Please enter a season of 1950 or later.")
+    sys.exit(1)
+
+if round_number < 1:
+    print("Invalid round number. Please enter around number of 1 or greater.")
     sys.exit(1)
 
 
